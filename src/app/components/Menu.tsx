@@ -5,6 +5,7 @@ import Logo from "public/TailwindLogo.png";
 
 import { HiCursorClick } from "react-icons/hi";
 import { FaWpforms } from "react-icons/fa";
+import { ImFontSize } from "react-icons/im";
 
 import Link from "next/link";
 
@@ -24,6 +25,11 @@ const menuItems: MenuItemsProps[] = [
     label: "Forms",
     path: "/forms",
     icon: <FaWpforms />,
+  },
+  {
+    label: "Fonts",
+    path: "/fonts",
+    icon: <ImFontSize />,
   },
 ];
 
