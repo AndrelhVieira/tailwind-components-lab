@@ -1,8 +1,14 @@
 import PageStructure from "../components/PageStructure";
 
 export default function Buttons() {
+  const pageProps = {
+    title: "Buttons",
+    description: `Here are some examples of buttons I'd like to create using Tailwind
+    CSS to improve my knowleadge with this tool. 😊`,
+  };
+
   return (
-    <PageStructure>
+    <PageStructure pageProps={pageProps}>
       <div className="flex flex-col gap-8 w-2/3 items-center">
         <button className="rounded-full bg-pink-800 font-light py-3 px-8 hover:bg-pink-900 transition">
           Full rounded

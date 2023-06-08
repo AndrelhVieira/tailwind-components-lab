@@ -2,21 +2,34 @@ import Image from "next/image";
 import React from "react";
 
 import Logo from "public/TailwindLogo.png";
-import { MenuItemsProps } from "../types";
 
 import { HiCursorClick } from "react-icons/hi";
+import { FaWpforms } from "react-icons/fa";
+
 import Link from "next/link";
 
-const MENU_ITEMS: MenuItemsProps[] = [
+type MenuItemsProps = {
+  label: string;
+  path: string;
+  icon: React.ReactNode;
+};
+
+const menuItems: MenuItemsProps[] = [
   {
     label: "Buttons",
     path: "/buttons",
+    icon: <HiCursorClick />,
+  },
+  {
+    label: "Forms",
+    path: "/forms",
+    icon: <FaWpforms />,
   },
 ];
 
 export function Menu() {
   return (
-    <aside className="bg-gray-900 rounded-tr-2xl rounded-br-2xl flex flex-col py-3 px-8 top-0 left-0 h-screen shadow-2xl">
+    <aside className="bg-gray-900 rounded-tr-2xl rounded-br-2xl flex flex-col py-3 px-8 top-0 left-0 h-screen shadow-2xl sticky">
       <Link href="/">
         <Image
           src={Logo}
@@ -26,12 +39,16 @@ export function Menu() {
           className="pb-5 mx-auto"
         />
       </Link>
-      <button className="flex p-2 gap-3 font-lato text-lg tracking-wider items-center selection:text-red-700 text-zinc-400 hover:text-white transition">
-        <HiCursorClick className="w-5 h-5" />
-        <Link href={MENU_ITEMS[0].path} className="">
-          {MENU_ITEMS[0].label}
-        </Link>
-      </button>
+
+      {menuItems.map((item, key) => (
+        <button
+          className="flex p-2 gap-3 font-lato text-lg tracking-wider items-center selection:text-red-700 text-zinc-400 hover:text-white transition"
+          key={item.label + key}
+        >
+          {item.icon}
+          <Link href={item.path}>{item.label}</Link>
+        </button>
+      ))}
     </aside>
   );
 }
